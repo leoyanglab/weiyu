@@ -1,0 +1,32 @@
+{
+  "name": "weiyu",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run build && wrangler dev --port 5180",
+    "build": "vite build && vite build --ssr src/server/worker.tsx && tsc --noEmit",
+    "preview": "wrangler dev --port 5180",
+    "test": "node --test tests/*.test.mjs",
+    "deploy": "npm run build && npm test && wrangler deploy",
+    "db:local": "wrangler d1 migrations apply weiyu-demo --local",
+    "db:remote": "wrangler d1 migrations apply weiyu-demo --remote",
+    "format": "prettier --write src tests vite.config.ts tsconfig.json package.json wrangler.jsonc README.md .github/workflows/check.yml"
+  },
+  "dependencies": {
+    "@preact/signals": "^2.3.0",
+    "h3": "^2.0.8",
+    "lucide-preact": "^0.468.0",
+    "preact": "^10.27.0",
+    "preact-render-to-string": "^6.8.2"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.2",
+    "@tailwindcss/vite": "^4.1.0",
+    "prettier": "^3.9.10",
+    "tailwindcss": "^4.1.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.0",
+    "wrangler": "^4.156.0"
+  }
+}
