@@ -1,0 +1,564 @@
+/* One palette for the feed, account screens, chat and navigation. */
+:root {
+  --page: #f7f8fc;
+  --surface: #ffffff;
+  --surface-soft: #f3f5fa;
+  --text: #202b43;
+  --secondary: #536079;
+  --muted: #626e83;
+  --border: #e3e8f1;
+  --primary: #6254e8;
+  --primary-hover: #5142d6;
+  --primary-soft: #efedff;
+  --primary-ink: #5143c5;
+  --rose: #cf426d;
+  --green: #247655;
+  --color-lilac: var(--primary);
+  --color-night: var(--page);
+  color: var(--text);
+  background: var(--page);
+}
+.sidebar,
+.topbar,
+.composer-preview,
+.post-card,
+.rail-card,
+.search-box,
+.search-mobile,
+.match-main,
+.match-notes,
+.chat-panel,
+.account-panel,
+.modal-card,
+.empty {
+  background: var(--surface);
+  border-color: var(--border);
+}
+.sidebar,
+.topbar,
+.post-card,
+.composer-preview,
+.rail-card,
+.search-box,
+.search-mobile,
+.chat-panel,
+.modal-card,
+.account-panel {
+  box-shadow: 0 3px 18px #27345204;
+}
+.brand,
+.feed-heading h2,
+.post-author > strong,
+.profile-card h2,
+.modal-header h2,
+.match-main h2,
+.match-notes > h3,
+.timeline-item h4,
+.chat-header strong,
+.chat-aside h3,
+.gentle-card h3,
+.recovery-view h3,
+.account-panel-copy strong,
+.about-content h3,
+.empty h2,
+.empty h3 {
+  color: var(--text);
+}
+.brand-symbol,
+.brand-symbol > svg:last-child,
+.heading-star,
+.tiny-star,
+.hero h2 span,
+.hero-label,
+.hero-label > span,
+.about-logo,
+.post-topic,
+.post-actions .meet-button,
+.own-label,
+.connection-line,
+.chat-day strong,
+.account-panel-icon,
+.auth-illustration,
+.live-dot,
+.composer-plus,
+.quote-star {
+  color: var(--primary);
+}
+.brand-en,
+.side-kicker,
+.nav-item,
+.sidebar-user div > span,
+.small-quote,
+.page-heading p,
+.page-subtitle,
+.eyebrow,
+.topbar-note,
+.demo-pill,
+.heading-date,
+.feed-heading h2 > span,
+.sort-tabs,
+.post-author > span,
+.demo-label,
+.post-actions,
+.feed-end,
+.rail-title > small,
+.daily-card p,
+.trending-topics small,
+.trending-topics > button > svg,
+.gentle-card p,
+.rail-footer,
+.search-box,
+.search-mobile,
+.site-footer,
+.match-disclaimer,
+.mini-eyebrow,
+.chat-header small,
+.chat-system,
+.chat-demo-note,
+.chat-aside > small,
+.chat-day span,
+.profile-stats span,
+.textarea-count,
+.form-note,
+.compose-user > span:last-child,
+.account-panel-copy p,
+.password-hint,
+.remember-me,
+.remember-me span {
+  color: var(--muted);
+}
+.post-content,
+.sidebar-user strong,
+.hero-copy p,
+.rail-title,
+.trending-topics strong,
+.match-main > p,
+.timeline-item p,
+.soft-note,
+.chat-aside > p,
+.profile-card p,
+.profile-intent,
+.profile-tabs > button,
+.muted,
+.about-content p,
+.field-label,
+.compose-user,
+.comment-list p > span,
+.menu-options > button,
+.decision-options > button,
+.auth-intro p,
+.auth-security-note,
+.auth-checks label,
+.recovery-view > p,
+.empty p {
+  color: var(--secondary);
+}
+.demo-label {
+  border-color: var(--border);
+}
+.nav-item:hover,
+.icon-button:hover,
+.menu-options > button:hover {
+  background: var(--surface-soft);
+  color: var(--text);
+}
+.nav-item.active,
+.header-login,
+.auth-tabs button.selected,
+.sort-tabs button.selected,
+.profile-tabs > button.selected,
+.text-button,
+.secondary-button,
+.daily-card > button,
+.gentle-card button,
+.account-controls > button {
+  color: var(--primary);
+}
+.nav-item.active,
+.topic-tabs button.selected,
+.header-login,
+.secondary-button,
+.intent-options button.selected,
+.decision-options > button.selected,
+.composer-plus,
+.account-panel-icon,
+.auth-illustration {
+  background: var(--primary-soft);
+}
+.nav-item.active:before,
+.sort-tabs button.selected:after,
+.live-dot,
+.hero-label > span {
+  background: var(--primary);
+}
+.primary-button,
+.publish-button,
+.send-button,
+.cream-button {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px #6254e81a;
+}
+.primary-button:hover,
+.publish-button:hover,
+.send-button:hover,
+.cream-button:hover {
+  background: var(--primary-hover);
+}
+.secondary-button,
+.composer-plus,
+.intent-options button.selected,
+.decision-options > button.selected {
+  border-color: #d5cfff;
+}
+.icon-button {
+  color: var(--muted);
+}
+.topic-tabs button {
+  background: var(--surface-soft);
+  color: var(--secondary);
+}
+.topic-tabs button.selected {
+  color: var(--primary-ink);
+}
+.topic-tabs button:hover {
+  background: var(--primary-soft);
+}
+.hero {
+  background:
+    radial-gradient(ellipse at 85% 50%, #d9e3ff88, transparent 55%),
+    linear-gradient(110deg, #eeecff, #edf4ff);
+  border-color: #e0dfff;
+}
+.hero h2 {
+  color: var(--text);
+}
+.orb-back {
+  background: radial-gradient(circle at 28% 22%, #c9d5ff, #8da9f4 48%, #6885d2);
+  box-shadow:
+    inset -20px -25px 30px #445fc522,
+    0 20px 40px #6874df16;
+}
+.orb-front {
+  background: radial-gradient(circle at 26% 22%, #c6bdff, #9a87f0 45%, #7562cd);
+  box-shadow:
+    inset -20px -25px 30px #5545ab22,
+    0 20px 40px #6874df16;
+}
+.orb-front:after {
+  border-color: #ffffff40;
+}
+.orbit {
+  border-color: #7165df30;
+}
+.orbit-two {
+  border-color: #7165df20;
+}
+.art-star {
+  color: #8170d9;
+}
+.floating-note {
+  background: #fffffff2;
+  border-color: #fff;
+  color: var(--primary-ink);
+  box-shadow: 0 5px 16px #6254e812;
+}
+.note-one {
+  color: var(--rose);
+}
+.art-caption {
+  color: #6c6c98;
+}
+.avatar-moon {
+  background: #fff3d3;
+  color: #a97319;
+}
+.avatar-sun {
+  background: #ffeddb;
+  color: #ae6326;
+}
+.avatar-planet {
+  background: #e8eeff;
+  color: #516ab1;
+}
+.avatar-flower {
+  background: #ffe8ef;
+  color: #bf4b72;
+}
+.avatar-cloud {
+  background: #def4eb;
+  color: #37856c;
+}
+.avatar-star {
+  background: #e9e3ff;
+  color: var(--primary);
+}
+.avatar {
+  border-color: #ffffff80;
+}
+.post-actions,
+.sidebar-user,
+.profile-tabs,
+.chat-header,
+.chat-day,
+.soft-note {
+  border-color: var(--border);
+}
+.post-actions > button.is-liked,
+.heart-button {
+  color: var(--rose);
+}
+.post-actions > button.is-saved {
+  color: var(--primary);
+}
+.nav-dot {
+  background: var(--rose);
+}
+.daily-card {
+  background: linear-gradient(135deg, #f0edff, #f5f7ff);
+  border-color: #e3dfff;
+}
+.daily-art,
+.daily-art > span {
+  color: #ada1e7;
+}
+.daily-card h3 {
+  color: var(--primary-ink);
+}
+.lilac {
+  background: #eeebff;
+  color: var(--primary);
+}
+.rose {
+  background: #ffedf2;
+  color: var(--rose);
+}
+.green {
+  background: #e9f7f0;
+  color: var(--green);
+}
+.gentle-card {
+  background: #f2faf6;
+  border-color: #dceee4;
+}
+.gentle-icon,
+.gentle-card button {
+  color: var(--green);
+}
+.rail-footer span,
+.small-quote > span {
+  color: #a9a0cd;
+}
+.search-box input,
+.search-mobile input,
+.chat-compose input,
+.modal-card textarea,
+.field-label input,
+.field-label select,
+.text-input {
+  color: var(--text);
+}
+input::placeholder,
+textarea::placeholder,
+.search-box input::placeholder,
+.search-mobile input::placeholder,
+.chat-compose input::placeholder,
+.modal-card textarea::placeholder,
+.text-input::placeholder,
+.auth-form .field-label input::placeholder {
+  color: var(--muted);
+}
+.sunset-scene {
+  background: linear-gradient(#a4a9de, #d6bbdf 33%, #f5c6b9 62%, #ada2cf);
+}
+.scene-sun {
+  background: #ffe1ad;
+  box-shadow: 0 0 50px #fff0cf88;
+}
+.mountain-back {
+  background: #9b98c7;
+}
+.mountain-front {
+  background: linear-gradient(#777fad, #596991);
+}
+.scene-caption {
+  color: #fff;
+}
+.scene-caption span {
+  color: #f2f0ff;
+}
+.music-card {
+  background: linear-gradient(100deg, #ecebff, #f5f1ff);
+  border-color: #e3dfff;
+}
+.record {
+  background: repeating-radial-gradient(
+    #353351 0,
+    #353351 2px,
+    #4c486e 3px,
+    #353351 4px
+  );
+  box-shadow: 2px 2px 10px #3d3a661a;
+}
+.record > div {
+  border-color: #ae9ce6;
+  background: #eadfff;
+}
+.music-card strong {
+  color: var(--text);
+}
+.music-card span,
+.music-card small {
+  color: var(--secondary);
+}
+.music-card > svg {
+  color: var(--primary);
+}
+.intent-options button {
+  color: var(--secondary);
+  border-color: var(--border);
+}
+.intent-options button.selected {
+  color: var(--primary-ink);
+}
+.icebreaker {
+  background: #f5f3ff;
+  border-color: #e4dfff;
+  color: var(--primary-ink);
+}
+.message-bubble {
+  background: var(--surface-soft);
+  color: var(--text);
+}
+.mine .message-bubble {
+  background: var(--primary-soft);
+  color: #3d3477;
+}
+.chat-compose {
+  background: var(--surface);
+  border-color: #dce1ed;
+}
+.chat-aside h3 {
+  color: var(--text);
+}
+.heart-button {
+  background: #fff1f5;
+  border-color: #f4d4df;
+}
+.heart-button.hearted {
+  background: #ffe4ed;
+  color: var(--rose);
+}
+.profile-card {
+  background: linear-gradient(110deg, #efedff, #f6f8ff);
+  border-color: #e1dfff;
+}
+.profile-stats strong {
+  color: var(--primary);
+}
+.profile-tabs > button.selected {
+  border-color: var(--primary);
+}
+.modal-backdrop {
+  background: #18203b66;
+}
+.modal-card {
+  box-shadow: 0 20px 100px #1e2b4c26;
+}
+.modal-card textarea,
+.field-label input,
+.field-label select,
+.text-input {
+  background: var(--surface);
+  border-color: #d9dfec;
+}
+.modal-card textarea:focus,
+.field-label input:focus,
+.field-label select:focus,
+.text-input:focus {
+  border-color: var(--primary);
+  outline: 1px solid var(--primary);
+}
+.modal-card blockquote {
+  background: var(--surface-soft);
+  color: var(--secondary);
+}
+.comment-list strong {
+  color: var(--primary);
+}
+.decision-options > button {
+  border-color: var(--border);
+}
+.decision-options > button.selected {
+  color: var(--primary-ink);
+  border-color: #c7bfff;
+}
+.toast {
+  background: #fff;
+  border-color: #ddd8ff;
+  color: var(--text);
+  box-shadow: 0 8px 30px #26365320;
+}
+.toast > svg {
+  color: var(--primary);
+}
+.account-panel.signed-in {
+  background: var(--surface);
+}
+.auth-illustration {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.auth-tabs {
+  background: var(--surface-soft);
+}
+.auth-tabs button {
+  color: var(--muted);
+}
+.auth-tabs button.selected {
+  background: var(--surface);
+  box-shadow: 0 2px 8px #293b5810;
+}
+.password-field > button {
+  color: var(--muted);
+}
+.auth-form input[type="checkbox"] {
+  accent-color: var(--primary);
+}
+.auth-error {
+  background: #fff2f5;
+  border-color: #f5cbd6;
+  color: #b73357;
+}
+.recovery-code {
+  color: var(--primary-ink);
+  background: var(--primary-soft);
+  border-color: #b7a8ee;
+}
+.auth-form input:autofill {
+  box-shadow: 0 0 0 40px var(--surface) inset;
+  color: var(--text);
+}
+@media (max-width: 900px) {
+  .mobile-nav {
+    background: #fffffff5;
+    border-color: var(--border);
+    box-shadow: 0 -4px 25px #2c3a5808;
+  }
+  .mobile-nav a {
+    color: var(--muted);
+  }
+  .mobile-nav a.active {
+    color: var(--primary);
+  }
+  .mobile-nav a.active > svg {
+    filter: none;
+  }
+  .hero-art {
+    opacity: 1;
+  }
+  .toast {
+    color: var(--text);
+  }
+}

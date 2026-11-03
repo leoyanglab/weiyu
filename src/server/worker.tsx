@@ -182,7 +182,7 @@ export function createApp(repo: Repository, auth?: AuthRepository) {
                     ? "我的小宇宙"
                     : "心动广场";
       const response = new Response(
-        `<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f8f9fc"><meta name="robots" content="noindex,nofollow"><meta name="description" content="未遇：先对话，再心动。匿名恋爱社交 Web 原型，所有角色和互动均为模拟。"><title>${title} · 未遇 WEIYU</title><link rel="icon" href="/favicon.svg">${(assets.css || []).map((p) => `<link rel="stylesheet" href="/${p}">`).join("")}</head><body><div id="app">${body}</div><script type="application/json" id="bootstrap">${safeJSON(state)}</script><script type="module" src="/${assets.file}"></script></body></html>`,
+        `<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f7f8fc"><meta name="robots" content="noindex,nofollow"><meta name="description" content="未遇：先对话，再心动。匿名恋爱社交 Web 原型，所有角色和互动均为模拟。"><title>${title} · 未遇 WEIYU</title><link rel="icon" href="/favicon.svg">${(assets.css || []).map((p) => `<link rel="stylesheet" href="/${p}">`).join("")}</head><body><div id="app">${body}</div><script type="application/json" id="bootstrap">${safeJSON(state)}</script><script type="module" src="/${assets.file}"></script></body></html>`,
         {
           headers: {
             "Content-Type": "text/html; charset=utf-8",
