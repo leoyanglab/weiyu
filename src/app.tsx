@@ -1,3 +1,4 @@
+import { AccountPanel, AuthForm } from "./auth-ui";
 import { useEffect, useState } from "preact/hooks";
 import {
   Heart,
@@ -92,6 +93,21 @@ export function App() {
     return () => window.removeEventListener("popstate", listener);
   }, []);
   useEffect(() => {
+    const sync = () => {
+      void s.refresh();
+    };
+    const channel =
+      typeof BroadcastChannel !== "undefined"
+        ? new BroadcastChannel("weiyu-account")
+        : null;
+    if (channel) channel.onmessage = sync;
+    window.addEventListener("focus", sync);
+    return () => {
+      channel?.close();
+      window.removeEventListener("focus", sync);
+    };
+  }, []);
+  useEffect(() => {
     const names = {
       square: "心动广场",
       match: "遇见同频",
@@ -164,6 +180,14 @@ export function App() {
           </div>
           <div class="top-actions">
             <span class="demo-pill">DEMO · 18+</span>
+            {!s.state.value.account && (
+              <button
+                class="header-login"
+                onClick={() => (s.modal.value = "auth-login")}
+              >
+                登录 / 注册
+              </button>
+            )}
             <button
               class="icon-button"
               aria-label="体验说明"
@@ -839,6 +863,7 @@ function Profile() {
         我的小宇宙<span class="heading-star">✳</span>
       </h1>
       <p class="page-subtitle">在遇见别人之前，先好好喜欢自己。</p>
+      <AccountPanel />
       <section class="profile-card">
         <Avatar kind="star" />
         <div>
@@ -932,22 +957,39 @@ function ModalContent() {
     [bio, setBio] = useState(s.state.value.profile.bio),
     [intent, setIntent] = useState(s.state.value.profile.intent);
   const post = s.state.value.posts.find((p) => p.id === s.selected.value);
-  const close = () => (s.modal.value = "");
+  const close = () => {
+    s.modal.value = "";
+    s.recoveryCode.value = "";
+    if (["/login", "/register", "/recover"].includes(location.pathname))
+      history.replaceState(null, "", "/me");
+  };
   const [decision, setDecision] = useState("继续匿名认识");
   const title =
-    kind === "compose"
-      ? "记录此刻"
-      : kind === "comments"
-        ? "给这份心事一个回音"
-        : kind === "profile"
-          ? "编辑你的小宇宙"
-          : kind === "more"
-            ? "这条动态"
-            : kind === "decision"
-              ? "下一步，听从你的心意"
-              : kind === "reset"
-                ? "重新开始这次体验？"
-                : "我们的小小约定";
+    kind === "auth-login"
+      ? "欢迎回到未遇"
+      : kind === "auth-register"
+        ? "认识你，很高兴"
+        : kind === "auth-recover"
+          ? "找回你的小宇宙"
+          : kind === "auth-password"
+            ? "修改登录密码"
+            : kind === "auth-logout-all"
+              ? "管理登录设备"
+              : kind === "recovery-code"
+                ? "请保存账号恢复码"
+                : kind === "compose"
+                  ? "记录此刻"
+                  : kind === "comments"
+                    ? "给这份心事一个回音"
+                    : kind === "profile"
+                      ? "编辑你的小宇宙"
+                      : kind === "more"
+                        ? "这条动态"
+                        : kind === "decision"
+                          ? "下一步，听从你的心意"
+                          : kind === "reset"
+                            ? "重新开始这次体验？"
+                            : "我们的小小约定";
   const submit = async (
     type: string,
     values: Record<string, unknown>,
@@ -1005,7 +1047,7 @@ function ModalContent() {
       }}
     >
       <section
-        class="modal-card"
+        class={`modal-card ${kind.startsWith("auth-") || kind === "recovery-code" ? "auth-modal" : ""}`}
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
@@ -1017,6 +1059,9 @@ function ModalContent() {
             <X size={21} />
           </button>
         </div>
+        {(kind.startsWith("auth-") || kind === "recovery-code") && (
+          <AuthForm mode={kind === "recovery-code" ? "code" : kind.slice(5)} />
+        )}
         {kind === "compose" && (
           <form
             onSubmit={(e) => {
@@ -1227,7 +1272,7 @@ function ModalContent() {
         {kind === "reset" && (
           <>
             <p class="muted">
-              将清除当前浏览器演示空间的动态、收藏、聊天和资料，恢复初始数据。
+              将清除当前演示空间的动态、收藏、聊天和资料，恢复初始数据。登录状态和账号密码不受影响。
             </p>
             <button
               class="primary-button full"
@@ -1257,8 +1302,7 @@ function ModalContent() {
             </p>
             <h3>你的独立演示空间</h3>
             <p>
-              通过浏览器 Cookie 隔离，操作保存在演示数据库中；清除 Cookie
-              后无法找回。数据有效期七天，可在「我的」重置。它不提供真实账号认证或私密通信保障。
+              游客记录按浏览器隔离，有效期七天。注册后，记录会保存在账号下，可跨设备登录继续使用。账号不向其他用户展示；不提供端到端加密。注册、修改密码或找回后，请保存新恢复码；暂不支持邮箱或短信找回。
             </p>
             <button class="primary-button full" onClick={close}>
               知道了，温柔地相遇

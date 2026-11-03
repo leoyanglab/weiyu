@@ -14,7 +14,9 @@ export type Post = {
   own?: boolean;
 };
 export type Message = { id: string; from: "me" | "them"; text: string };
+export type Account = { id: string; username: string; createdAt: number };
 export type State = {
+  account?: Account | null;
   posts: Post[];
   profile: { name: string; bio: string; intent: string };
   matched: boolean;
@@ -43,11 +45,20 @@ export const viewFromPath = (p: string): View =>
     ? "match"
     : p === "/messages"
       ? "messages"
-      : p === "/me"
+      : ["/me", "/login", "/register", "/recover"].includes(p)
         ? "me"
         : "square";
+export const authModalFromPath = (p: string) =>
+  p === "/login"
+    ? "auth-login"
+    : p === "/register"
+      ? "auth-register"
+      : p === "/recover"
+        ? "auth-recover"
+        : "";
 export function initialState(): State {
   return {
+    account: null,
     profile: {
       name: "路过的星星",
       bio: "在这里，等一场刚刚好的相遇。",
