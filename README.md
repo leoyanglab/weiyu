@@ -115,7 +115,19 @@ npx wrangler deploy --dry-run
 4. 修改 package.json 中迁移脚本的数据库名称，执行 `npm run db:remote`。
 5. `npm run deploy`，构建与测试通过后发布 Worker。
 
-Fork 后必须替换数据库与域名配置，不能直接操作此演示实例。仓库不含登录令牌、Cookie、运行时数据或 Cloudflare 密钥。GitHub Actions 在 push/PR 时构建测试；部署目前通过 Wrangler 执行，未配置推送自动发布。
+Fork 后必须替换数据库与域名配置，不能直接操作此演示实例。仓库不含登录令牌、Cookie、运行时数据或 Cloudflare 密钥。
+
+## Git 推送自动部署
+
+Cloudflare Worker `weiyu` 已通过原生 Git 集成连接 `leoyanglab/weiyu`，生产分支为 `main`。推送 `main` 后自动构建、测试并发布到 [weiyu.bool.win](https://weiyu.bool.win)。
+
+- 构建命令：`npm run build && npm test`，失败时不执行部署。
+- 部署命令：`npx wrangler deploy`。
+- 构建环境：`NODE_VERSION=22`，项目根目录 `/`。
+- 非生产分支预览构建已关闭。
+- GitHub Actions 继续在 push/PR 时独立校验。部署由 Cloudflare 执行，使用其已有构建令牌，无需向 GitHub 保存 Cloudflare 密钥。
+
+数据库迁移不随 push 自动执行。新增迁移应先审查并执行 `npm run db:remote`，再推送依赖该结构的代码。构建设置在 Cloudflare Worker「设置 → 构建」中管理。
 
 升级已有实例时，先运行 `npm run db:remote` 应用 `0002_accounts.sql`，再部署新 Worker。迁移只增加账号相关表，不修改现有游客数据。定时任务清理过期游客空间、登录会话和限流记录，不清理账号记录。
 
