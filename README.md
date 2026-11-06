@@ -136,3 +136,7 @@ Cloudflare Worker `weiyu` 已通过原生 Git 集成连接 `leoyanglab/weiyu`，
 ## 开源许可
 
 MIT © 2026 leoyanglab
+
+## 代码阅读与维护
+
+[代码结构与阅读顺序](docs/architecture.md) 说明入口、模块职责和状态边界。统一格式：`npm run format`；检查格式：`npm run format:check`。

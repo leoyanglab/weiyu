@@ -11,7 +11,8 @@
     "deploy": "npm run build && npm test && wrangler deploy",
     "db:local": "wrangler d1 migrations apply weiyu-demo --local",
     "db:remote": "wrangler d1 migrations apply weiyu-demo --remote",
-    "format": "prettier --write src tests vite.config.ts tsconfig.json package.json wrangler.jsonc README.md .github/workflows/check.yml"
+    "format": "prettier --write src tests vite.config.ts tsconfig.json package.json wrangler.jsonc README.md docs/architecture.md .github/workflows/check.yml",
+    "format:check": "prettier --check src tests vite.config.ts tsconfig.json package.json wrangler.jsonc README.md docs/architecture.md .github/workflows/check.yml"
   },
   "dependencies": {
     "@preact/signals": "^2.3.0",
